@@ -51,13 +51,28 @@ class ExceptionFormatter(object):
                 print(
                     "{3}{0} {5}{2}\n{4}{1}| {6}{7}\n".format(
                         info.group("fn"), info.group("line"), info.group("scope"),
-                        Fore.BLUE, Fore.YELLOW, Fore.MAGENTA,
-                        Fore.BLACK, statement,
+                        Fore.LIGHTBLUE_EX, Fore.YELLOW, Fore.MAGENTA,
+                        Fore.RESET, statement,
                         # "~"*len(statement)
                     ),
                 )
             else:
-                print('\n'.join(messages), end='\n' * 2)
+                err: str = messages[0]
+                scope: str = messages[-2]
+                statement: str = messages[-1]
+                info = re.match(r"File \"(?P<fn>.+)\", line (?P<line>\d+), in (?P<scope>.+)", scope)
+                print(
+                    Fore.RED + err
+                )
+                print(Back.RED + Fore.WHITE + " {} ".format(messages[1]))
+                print(
+                    "{3}{0} {5}{2}\n{4}{1}| {6}{7}\n".format(
+                        info.group("fn"), info.group("line"), info.group("scope"),
+                        Fore.LIGHTBLUE_EX, Fore.YELLOW, Fore.MAGENTA,
+                        Fore.RESET, statement,
+                        # "~"*len(statement)
+                    ),
+                )
         print(
             Fore.RED + self.messages[-1][0]
         )

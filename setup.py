@@ -10,6 +10,6 @@ setup(
     license='GNU General Public License v3.0',
     author='Donghyeok Tak',
     author_email='tdh8316@naver.com',
-    description='The choice to live one’s life and fill it with beauty. Your own way.',
+    description='Lancóme, The choice to fill your console outputs with beauty.',
     install_requires=['colorama']
 )
