@@ -1,5 +1,5 @@
 # Overview
-Lancôme, The choice to fill your console outputs with beauty.
+Lancôme, The choice to fill your exception outputs with beauty.
 
 Lancôme makes python outputs about exceptions prettier and clean.
 

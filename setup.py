@@ -10,6 +10,6 @@ setup(
     license='GNU General Public License v3.0',
     author='Donghyeok Tak',
     author_email='tdh8316@naver.com',
-    description='Lancóme, The choice to fill your console outputs with beauty.',
+    description=open("./README.md", 'r', encoding="UTF-8").readlines()[1][:-2],
     install_requires=['colorama']
 )
