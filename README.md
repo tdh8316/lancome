@@ -15,4 +15,4 @@ import lancome
 # License
 Licensed under the **GNU General Public License v3.0** License
 
-> Copyright 2019 `Donghyeok Tak`
+> Copyright 2020 `Donghyeok Tak`
