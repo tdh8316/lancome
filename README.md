@@ -13,6 +13,6 @@ import lancome
 ```
 
 # License
-Licensed under the **GNU General Public License v3.0** License
+Licensed under the **MIT** License
 
 > Copyright 2020 `Donghyeok Tak`
