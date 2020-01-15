@@ -1,5 +1,5 @@
 import re
-from typing import List
+from typing import List, Iterable
 
 from colorama import Fore, Back
 
@@ -14,7 +14,7 @@ class ExceptionFormatter(object):
     def from_list(cls, exception_messages: List[str]):
         self = cls()
 
-        exception_messages = ''.join(exception_messages).split('\n')[1:]
+        exception_messages: Iterable = ''.join(exception_messages).split('\n')[1:]
 
         formatted_messages: List = []
         latest_indention: int = 0

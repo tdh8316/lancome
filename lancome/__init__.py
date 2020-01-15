@@ -1,12 +1,14 @@
+import atexit
 import sys
 import time
 import traceback
 
 import colorama
-import atexit
+
 from lancome.formatter import ExceptionFormatter
 
 __version__ = "0.1"
+
 
 @atexit.register
 def dispose() -> None:
