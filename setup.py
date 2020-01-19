@@ -10,7 +10,7 @@ setup(
     license='GNU General Public License v3.0',
     author='Donghyeok Tak',
     author_email='tdh8316@naver.com',
-    description=open('./README.md', 'r', encoding='UTF-8').readlines()[1][:-2],
+    description="Lancôme, The choice to fill your exception outputs with beauty.",
     long_description=open('README.md', 'r', encoding='UTF-8').read(),
     install_requires=['colorama'],
     python_requires='>=3',
