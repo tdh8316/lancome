@@ -5,18 +5,19 @@ import traceback
 
 import colorama
 
+from lancome.configure import configure
 from lancome.formatter import ExceptionFormatter
 
 __version__ = "0.1"
 
 
 @atexit.register
-def dispose() -> None:
+def _dispose() -> None:
     time.sleep(0.1)  # Await socket
     colorama.deinit()
 
 
-def excepthook(t: type, v: Exception, tb) -> None:
+def _excepthook(t: type, v: Exception, tb) -> None:
     """Alternative of default sys.excepthook
 
     :param t: Exception type
@@ -37,9 +38,5 @@ def excepthook(t: type, v: Exception, tb) -> None:
 
 
 def init():
-    sys.excepthook = lambda t, v, tb: excepthook(t, v, tb)
+    sys.excepthook = lambda t, v, tb: _excepthook(t, v, tb)
     colorama.init(autoreset=True)
-
-
-if __name__ != "__main__":
-    init()
