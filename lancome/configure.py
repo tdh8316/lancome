@@ -25,4 +25,7 @@ class _Then(object):
 
     @staticmethod
     def then(func: Callable):
-        ...
+        if callable(func):
+            func()
+        else:
+            raise TypeError("{} is not callable.".format(func))

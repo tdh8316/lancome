@@ -19,9 +19,7 @@ Also, you can initialize Lancôme with custom configure.
 ```python
 import lancome
 
-lancome.configure(
-    use_color=True
-).then(lancome.init())
+lancome.configure(use_color=True).then(lambda: lancome.init())
 ```
 
 
