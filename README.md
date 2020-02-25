@@ -5,6 +5,14 @@ Lancôme makes python outputs about exceptions prettier and clean.
 
 ![Example](./docs/beforeafter.png)
 
+# Setup
+For now, this library is not available on pypi.
+```cmd
+git clone https://github.com/tdh8316/lancome.git
+cd lancome
+python setup.py install
+```
+
 # Usage
 You just have to import and invoke `init` function of Lancôme. That's all!
 
