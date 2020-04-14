@@ -55,7 +55,7 @@ class ExceptionFormatter(object):
             if hasattr(info, "group"):
                 if Configure.use_color:
                     print(
-                        "{3}{0} {5}{2}\n{4}{1}| {6}{7}\n".format(
+                        "{3}{0} {5}{2}\n{4}{1}| {6}{7}".format(
                             info.group("fn"), info.group("line"), info.group("scope"),
                             Fore.LIGHTBLUE_EX, Fore.YELLOW, Fore.MAGENTA,
                             Fore.RESET, statement,
@@ -64,7 +64,7 @@ class ExceptionFormatter(object):
                     )
                 else:
                     print(
-                        "{3}{0} {5}{2}\n{4}{1}| {6}{7}\n".format(
+                        "{3}{0} {5}{2}\n{4}{1}| {6}{7}".format(
                             info.group("fn"), info.group("line"), info.group("scope"),
                             '', '', '',
                             Fore.RESET, statement,
@@ -78,11 +78,11 @@ class ExceptionFormatter(object):
                 info = re.match(r"File \"(?P<fn>.+)\", line (?P<line>\d+), in (?P<scope>.+)", scope)
                 if Configure.use_color:
                     print(
-                        Fore.RED + err
+                        Fore.RED + err + "\n"
                     )
                     print(Back.RED + Fore.WHITE + " {} ".format(messages[1]))
                     print(
-                        "{3}{0} {5}{2}\n{4}{1}| {6}{7}\n".format(
+                        "{3}{0} {5}{2}\n{4}{1}| {6}{7}".format(
                             info.group("fn"), info.group("line"), info.group("scope"),
                             Fore.LIGHTBLUE_EX, Fore.YELLOW, Fore.MAGENTA,
                             Fore.RESET, statement,
@@ -91,11 +91,11 @@ class ExceptionFormatter(object):
                     )
                 else:
                     print(
-                        '' + err
+                        '' + err + "\n"
                     )
                     print(" {} ".format(messages[1]))
                     print(
-                        "{3}{0} {5}{2}\n{4}{1}| {6}{7}\n".format(
+                        "{3}{0} {5}{2}\n{4}{1}| {6}{7}".format(
                             info.group("fn"), info.group("line"), info.group("scope"),
                             '', '', '',
                             Fore.RESET, statement,
