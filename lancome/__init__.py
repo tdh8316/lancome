@@ -27,7 +27,9 @@ def _excepthook(t: type, v: Exception, tb) -> None:
     """
 
     # time.sleep(0.1)  # Await socket
-    fm = ExceptionFormatter.from_list(exception_messages=traceback.format_exception(t, v, tb))
+    fm = ExceptionFormatter.from_list(
+        exception_messages=traceback.format_exception(t, v, tb)
+    )
 
     fm.invoke()
 

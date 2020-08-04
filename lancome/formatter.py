@@ -16,7 +16,7 @@ class ExceptionFormatter(object):
     def from_list(cls, exception_messages: List[str]):
         self = cls()
 
-        exception_messages: Iterable = ''.join(exception_messages).split('\n')[1:]
+        exception_messages: Iterable = "".join(exception_messages).split("\n")[1:]
 
         formatted_messages: List = []
         latest_indention: int = 0
@@ -45,29 +45,38 @@ class ExceptionFormatter(object):
         else:
             print(" An unhandled exception was occurred. ")
         for messages in self.messages[:-1]:
-            messages: list = [s.strip() for s in messages if s != '']
+            messages: list = [s.strip() for s in messages if s != ""]
 
             scope: str = messages[0]
             statement: str = messages[1]
 
-            info = re.match(r"File \"(?P<fn>.+)\", line (?P<line>\d+), in (?P<scope>.+)", scope)
+            info = re.match(
+                r"File \"(?P<fn>.+)\", line (?P<line>\d+), in (?P<scope>.+)", scope
+            )
 
             if hasattr(info, "group"):
                 if Configure.use_color:
                     print(
                         "{3}{0} {5}{2}\n{4}{1}| {6}{7}".format(
-                            info.group("fn"), info.group("line"), info.group("scope"),
-                            Fore.LIGHTBLUE_EX, Fore.YELLOW, Fore.MAGENTA,
-                            Fore.RESET, statement,
+                            info.group("fn"),
+                            info.group("line"),
+                            info.group("scope"),
+                            Fore.LIGHTBLUE_EX,
+                            Fore.YELLOW,
+                            Fore.MAGENTA,
+                            Fore.RESET,
+                            statement,
                             # "~"*len(statement)
                         ),
                     )
                 else:
                     print(
-                        "{3}{0} {5}{2}\n{4}{1}| {6}{7}".format(
-                            info.group("fn"), info.group("line"), info.group("scope"),
-                            '', '', '',
-                            Fore.RESET, statement,
+                        "{0} {2}\n{1}| {3}{4}".format(
+                            info.group("fn"),
+                            info.group("line"),
+                            info.group("scope"),
+                            Fore.RESET,
+                            statement,
                             # "~"*len(statement)
                         ),
                     )
@@ -75,38 +84,39 @@ class ExceptionFormatter(object):
                 err: str = messages[0]
                 scope: str = messages[-2]
                 statement: str = messages[-1]
-                info = re.match(r"File \"(?P<fn>.+)\", line (?P<line>\d+), in (?P<scope>.+)", scope)
+                info = re.match(
+                    r"File \"(?P<fn>.+)\", line (?P<line>\d+), in (?P<scope>.+)", scope
+                )
                 if Configure.use_color:
-                    print(
-                        Fore.RED + err + "\n"
-                    )
+                    print(Fore.RED + err + "\n")
                     print(Back.RED + Fore.WHITE + " {} ".format(messages[1]))
                     print(
                         "{3}{0} {5}{2}\n{4}{1}| {6}{7}".format(
-                            info.group("fn"), info.group("line"), info.group("scope"),
-                            Fore.LIGHTBLUE_EX, Fore.YELLOW, Fore.MAGENTA,
-                            Fore.RESET, statement,
+                            info.group("fn"),
+                            info.group("line"),
+                            info.group("scope"),
+                            Fore.LIGHTBLUE_EX,
+                            Fore.YELLOW,
+                            Fore.MAGENTA,
+                            Fore.RESET,
+                            statement,
                             # "~"*len(statement)
                         ),
                     )
                 else:
-                    print(
-                        '' + err + "\n"
-                    )
+                    print("" + err + "\n")
                     print(" {} ".format(messages[1]))
                     print(
-                        "{3}{0} {5}{2}\n{4}{1}| {6}{7}".format(
-                            info.group("fn"), info.group("line"), info.group("scope"),
-                            '', '', '',
-                            Fore.RESET, statement,
+                        "{0} {2}\n{1}| {3}{4}".format(
+                            info.group("fn"),
+                            info.group("line"),
+                            info.group("scope"),
+                            Fore.RESET,
+                            statement,
                             # "~"*len(statement)
                         ),
                     )
         if Configure.use_color:
-            print(
-                Fore.RED + self.messages[-1][0]
-            )
+            print(Fore.RED + self.messages[-1][0])
         else:
-            print(
-                self.messages[-1][0]
-            )
+            print(self.messages[-1][0])

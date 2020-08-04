@@ -2,7 +2,6 @@ from typing import Callable
 
 
 class Configure(object):
-
     def __init__(self):
         self.use_color: bool = True
 
@@ -11,7 +10,7 @@ class Configure(object):
         return self.use_color
 
     @use_color.setter
-    def use_color(self, value):
+    def use_color(self, value: bool):
         self._use_color = value
 
 
@@ -22,7 +21,6 @@ def configure(use_color: bool = True):
 
 
 class _Then(object):
-
     @staticmethod
     def then(func: Callable):
         if callable(func):
